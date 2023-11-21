@@ -69,6 +69,7 @@
   },
   "devDependencies": {
     "@types/node": "18.14.0",
+    "@vueuse/core": "^10.6.1",
     "babel-loader": "8.2.2",
     "chokidar": "^3.5.0",
     "compression-webpack-plugin": "4.0.1",
@@ -181,6 +182,6 @@
       "webpack-dev-server": "3.11.0",
       "webpack-merge": "4.2.2"
     },
-    "hash": "eadc81a97136a7795c26f6d2dfadc387870c9c200790c9b84d3116ee6c31e309"
+    "hash": "a82a2e59630dbc760c4c9aa24d1984caab45c418b12594034dc2d8b524ba1f12"
   }
 }

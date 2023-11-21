@@ -1,13 +1,22 @@
 package com.vaadin.example.views;
 
+import java.beans.IntrospectionException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.google.gson.Gson;
 import com.vaadin.example.ApplicationServiceInitListener;
-import com.vaadin.example.components.ExampleComponent;
+import com.vaadin.example.components.HelloWorld;
+import com.vaadin.example.data.entity.Movie;
 import com.vaadin.example.data.service.MovieService;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+
+import elemental.json.JsonArray;
+import elemental.json.JsonFactory;
+import elemental.json.impl.JreJsonFactory;
 
 /**
  * A simple Vaadin View class that shows all Movies in a database.
@@ -19,8 +28,19 @@ import com.vaadin.flow.router.Route;
 @CssImport("./styles/shared-styles.css")
 public class MainView extends VerticalLayout {
 
-    public MainView(@Autowired MovieService movieService) {
-        add(new ExampleComponent());
+    private JsonArray convert(List<Movie> movies) {
+        Gson gson = new Gson();
+        JsonFactory jsonFactory = new JreJsonFactory();
+
+        return jsonFactory.parse(gson.toJson(movies));
+    }
+
+    public MainView(@Autowired MovieService movieService) throws IntrospectionException {
+        HelloWorld hello = new HelloWorld();
+        hello.setColumns("this is a list of columns!");
+        hello.setItems(convert(movieService.getMovies()));
+        hello.addClickListener(e -> { System.out.println("Clicked!"); });
+        add(hello);
 /*
         // Create and add header text
         add(new H3("Accessing in-memory database using JdbcTemplate"));

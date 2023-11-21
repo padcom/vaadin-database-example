@@ -1,18 +1,14 @@
-import { LitElement, html, customElement } from 'lit-element'
+import { LitElement, html, customElement, property } from 'lit-element'
+
+interface Column {
+  id: string
+}
 
 @customElement('example-component')
 export class ExampleComponent extends LitElement {
+  @property({ type: Object }) columns!: Column[]
+
   render() {
     return html`<hello-world></hello-world>`
   }
 }
-
-// @ts-ignore xxx
-globalThis.__VUE_OPTIONS_API__ = true
-// @ts-ignore xxx
-globalThis.__VUE_PROD_DEVTOOLS__ = true
-
-import { defineCustomElement } from 'vue'
-import HelloWorld from './HelloWorld.vue'
-
-customElements.define('hello-world', defineCustomElement(HelloWorld))
