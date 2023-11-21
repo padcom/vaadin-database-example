@@ -3,13 +3,10 @@ package com.vaadin.example.views;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.example.ApplicationServiceInitListener;
-import com.vaadin.example.data.entity.Movie;
+import com.vaadin.example.components.ExampleComponent;
 import com.vaadin.example.data.service.MovieService;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.renderer.TemplateRenderer;
 import com.vaadin.flow.router.Route;
 
 /**
@@ -23,12 +20,15 @@ import com.vaadin.flow.router.Route;
 public class MainView extends VerticalLayout {
 
     public MainView(@Autowired MovieService movieService) {
-
+        add(new ExampleComponent());
+/*
         // Create and add header text
         add(new H3("Accessing in-memory database using JdbcTemplate"));
 
         // create Grid component
         final Grid<Movie> movies = new Grid<>(Movie.class);
+
+        System.out.println(movieService.getMovies());
 
         // fetch all movies from our Service
         movies.setItems(movieService.getMovies());
@@ -49,6 +49,7 @@ public class MainView extends VerticalLayout {
 
         // Add Grid to view
         add(movies);
+*/
     }
 
 }

@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "example",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.vaadin.example.Application",
+      "projectName": "database-example",
+      "args": "-Dvaadin.frontend.hotdeploy=true",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
